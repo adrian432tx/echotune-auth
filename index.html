@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connect Apple Music</title>
+    <script src="https://js-cdn.music.apple.com/musickit/v3/musickit.js"></script>
+    <style>
+        body { font-family: -apple-system, system-ui; background: #000; color: #fff; text-align: center; padding-top: 40px; }
+        .btn { background: #fa2d48; color: white; border: none; padding: 15px 30px; font-size: 18px; border-radius: 10px; cursor: pointer; margin-top: 20px; }
+        .error { color: #ff3b30; padding: 10px; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <img src="https://js-cdn.music.apple.com/musickit/v3/components/musickit-logo/dark/musickit-logo.svg" width="80" alt="logo">
+    <h2>Connect Apple Music</h2>
+    <p>Sign in to link your account.</p>
+    
+    <button id="login-btn" class="btn">Sign In</button>
+    <div id="error-container"></div>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const devToken = urlParams.get('token');
+        const callbackScheme = "echotune"; 
+
+        if (!devToken) {
+            document.getElementById('error-container').innerText = "Error: Missing Developer Token";
+            document.getElementById('login-btn').style.display = 'none';
+        }
+        
+        document.addEventListener('musickitloaded', async function() {
+            if (!devToken) return;
+            try {
+                await MusicKit.configure({
+                    developerToken: devToken,
+                    app: { name: 'EchoTune', build: '1.0.0' }
+                });
+                const music = MusicKit.getInstance();
+                document.getElementById('login-btn').addEventListener('click', async () => {
+                    try {
+                        const userToken = await music.authorize();
+                        window.location.href = callbackScheme + '://auth-callback?userToken=' + encodeURIComponent(userToken);
+                    } catch (err) {
+                        document.getElementById('error-container').innerText = 'Auth Error: ' + err;
+                    }
+                });
+            } catch (err) {
+                document.getElementById('error-container').innerText = 'Config Error: ' + err;
+            }
+        });
+    </script>
+</body>
+</html>
