@@ -34,7 +34,11 @@
             try {
                 await MusicKit.configure({
                     developerToken: devToken,
-                    app: { name: 'EchoTune', build: '1.0.0' }
+                    app: {
+                        name: 'EchoTune',
+                        build: '1.0.0',
+                        origin: 'https://adrian432tx.github.io'
+                    }
                 });
                 const music = MusicKit.getInstance();
                 document.getElementById('login-btn').addEventListener('click', async () => {
