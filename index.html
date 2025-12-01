@@ -44,29 +44,18 @@
         }
 
         .logo-container {
-            margin-bottom: 24px;
+            margin-bottom: 16px;
         }
 
         .echotune-logo {
             width: 80px;
             height: 80px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #00D4AA 0%, #00B894 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            border-radius: 40px;
             margin: 0 auto 12px;
-            box-shadow: 0 8px 32px rgba(0, 212, 170, 0.3);
-        }
-
-        .echotune-logo svg {
-            width: 48px;
-            height: 48px;
-            fill: white;
         }
 
         .app-name {
-            font-size: 28px;
+            font-size: 36px;
             font-weight: 700;
             background: linear-gradient(135deg, #00D4AA 0%, #00E5B8 50%, #00B894 100%);
             -webkit-background-clip: text;
@@ -74,17 +63,25 @@
             background-clip: text;
         }
 
+        .tagline {
+            font-size: 16px;
+            color: #b3b3b3;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+            margin-bottom: 32px;
+        }
+
         h2 {
-            font-size: 22px;
+            font-size: 20px;
             font-weight: 600;
             color: #ffffff;
             margin-bottom: 8px;
         }
 
         .subtitle {
-            font-size: 15px;
+            font-size: 14px;
             color: #888;
-            margin-bottom: 32px;
+            margin-bottom: 28px;
             line-height: 1.4;
         }
 
@@ -96,7 +93,7 @@
             border: 1px solid rgba(255, 255, 255, 0.12);
             border-radius: 20px;
             padding: 8px 16px;
-            margin-bottom: 28px;
+            margin-bottom: 24px;
         }
 
         .apple-music-badge svg {
@@ -111,9 +108,9 @@
         }
 
         .btn {
-            background: linear-gradient(135deg, #FA233B 0%, #fb4d61 100%);
+            background: #000000;
             color: white;
-            border: none;
+            border: 1px solid rgba(255, 255, 255, 0.1);
             padding: 16px 40px;
             font-size: 17px;
             font-weight: 600;
@@ -126,7 +123,7 @@
             justify-content: center;
             gap: 10px;
             transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s;
-            box-shadow: 0 6px 20px rgba(250, 35, 59, 0.35);
+            box-shadow: 0 6px 20px rgba(250, 35, 59, 0.3);
             margin: 0 auto;
         }
 
@@ -195,17 +192,48 @@
 <body>
     <div class="container">
         <div class="logo-container">
-            <!-- EchoTune Bat Logo -->
-            <div class="echotune-logo">
-                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M50 15 C35 15 25 25 20 35 C15 45 10 55 5 65 C15 60 25 58 35 60 C40 45 45 35 50 30 C55 35 60 45 65 60 C75 58 85 60 95 65 C90 55 85 45 80 35 C75 25 65 15 50 15 Z M50 50 C45 50 42 55 42 60 C42 65 45 70 50 70 C55 70 58 65 58 60 C58 55 55 50 50 50 Z"/>
-                </svg>
-            </div>
+            <!-- EchoTune Bat Logo with Sound Waves -->
+            <svg class="echotune-logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="batGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#00D4AA"/>
+                        <stop offset="100%" style="stop-color:#00B894"/>
+                    </linearGradient>
+                    <linearGradient id="waveGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" style="stop-color:#00D4AA"/>
+                        <stop offset="100%" style="stop-color:#4A90D9"/>
+                    </linearGradient>
+                </defs>
+                <!-- Left sound waves -->
+                <path d="M18 35 Q12 50 18 65" stroke="url(#waveGradient)" stroke-width="3" fill="none" stroke-linecap="round"/>
+                <path d="M10 30 Q2 50 10 70" stroke="url(#waveGradient)" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.6"/>
+                <!-- Right sound waves -->
+                <path d="M82 35 Q88 50 82 65" stroke="url(#waveGradient)" stroke-width="3" fill="none" stroke-linecap="round"/>
+                <path d="M90 30 Q98 50 90 70" stroke="url(#waveGradient)" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.6"/>
+                <!-- Bat body -->
+                <ellipse cx="50" cy="52" rx="12" ry="14" fill="url(#batGradient)"/>
+                <!-- Bat head -->
+                <circle cx="50" cy="38" r="10" fill="url(#batGradient)"/>
+                <!-- Left ear -->
+                <path d="M42 32 L38 22 L44 30 Z" fill="url(#batGradient)"/>
+                <!-- Right ear -->
+                <path d="M58 32 L62 22 L56 30 Z" fill="url(#batGradient)"/>
+                <!-- Left wing -->
+                <path d="M38 48 Q20 42 25 58 Q30 52 38 55 Z" fill="url(#batGradient)"/>
+                <!-- Right wing -->
+                <path d="M62 48 Q80 42 75 58 Q70 52 62 55 Z" fill="url(#batGradient)"/>
+                <!-- Eyes -->
+                <circle cx="46" cy="38" r="2" fill="#000"/>
+                <circle cx="54" cy="38" r="2" fill="#000"/>
+                <!-- Smile -->
+                <path d="M46 43 Q50 46 54 43" stroke="#000" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+            </svg>
             <div class="app-name">EchoTune</div>
+            <div class="tagline">Where Music Meets Video</div>
         </div>
 
         <h2>Connect Apple Music</h2>
-        <p class="subtitle">Sign in to discover YouTube videos for your favorite music</p>
+        <p class="subtitle">Link your account to discover videos</p>
 
         <div class="apple-music-badge">
             <!-- Music Note Icon -->
@@ -220,7 +248,7 @@
             <svg viewBox="0 0 24 24">
                 <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
             </svg>
-            Sign In
+            Sign in with Apple Music
         </button>
 
         <div class="loading" id="loading">
